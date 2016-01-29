@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pomodoro Clock</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="content">
+  <h1>Pomodoro Clock</h1>
+
+  <!-- 
+    section for timer settings
+  -->
+  <div class="set-timer--break">
+    <div class="set-timer--trigger__up">+</div>
+    <div class="set-timer--label">5</div>
+    <div class="set-timer--trigger__down">-</div>
+  </div>
+  <div class="set-timer--session">
+    <div class="set-timer--trigger__up">+</div>
+    <div class="set-timer--label">25</div>
+    <div class="set-timer--trigger__down">-</div>
+  </div>
+
+  <!-- 
+    timer states
+    Innactive = no class
+    Active Session Timer: .active--session
+    Active Break Timer: .active--break
+   -->
+  <div class="pomodoro--timer">
+    <h2 class="pomodoro--header">Session</h2>
+    <p>0:00</p>
+  </div>
+</div>
+<script src="scripts/main.js"></script>
+</body>
+</html>
