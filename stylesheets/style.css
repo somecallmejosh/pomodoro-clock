@@ -1,37 +1,4 @@
 /* line 11, ../sass/style.sass */
-*, *::before, *::after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* line 13, ../sass/style.sass */
-html {
-  padding: 0;
-  margin: 0;
-}
-
-/* line 16, ../sass/style.sass */
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Open Sans Condensed", sans-serif;
-  background-color: #70a300;
-  color: white;
-  text-align: center;
-}
-/* line 106, ../../../../../../../.rvm/gems/ruby-2.2.1@free-code-camp/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
-body html {
-  font-size: 100%;
-  line-height: 1.5em;
-}
-
-/* line 25, ../sass/style.sass */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-}
-
-/* line 28, ../sass/style.sass */
 button, [class*="set-timer--trigger"] {
   background-color: #2b3f00;
   color: white;
@@ -45,22 +12,68 @@ button, [class*="set-timer--trigger"] {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-/* line 35, ../sass/style.sass */
+/* line 18, ../sass/style.sass */
 button:hover, [class*="set-timer--trigger"]:hover {
   cursor: pointer;
 }
-/* line 37, ../sass/style.sass */
+/* line 20, ../sass/style.sass */
 button:hover, [class*="set-timer--trigger"]:hover, button:active, [class*="set-timer--trigger"]:active, button:focus, [class*="set-timer--trigger"]:focus {
   border: #770d15 1px solid;
   background-color: #c51c22;
 }
 
-/* line 40, ../sass/style.sass */
+/* line 24, ../sass/style.sass */
+*, *::before, *::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 26, ../sass/style.sass */
+html {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 29, ../sass/style.sass */
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans Condensed", sans-serif;
+  background-color: #70a300;
+  color: white;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* line 106, ../../../../../../../.rvm/gems/ruby-2.2.1@free-code-camp/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
+body html {
+  font-size: 100%;
+  line-height: 1.5em;
+}
+
+/* line 42, ../sass/style.sass */
+h1 {
+  text-transform: uppercase;
+  font-size: 2.25em;
+  line-height: 1.33333em;
+  font-weight: normal;
+}
+
+/* line 46, ../sass/style.sass */
+h1 strong {
+  color: #770d15;
+  font-style: normal;
+}
+
+/* line 49, ../sass/style.sass */
 button {
   padding: 0.75em;
 }
 
-/* line 43, ../sass/style.sass */
+/* line 52, ../sass/style.sass */
 [class*="set-timer--"] {
   display: inline-block;
   vertical-align: middle;
@@ -69,27 +82,27 @@ button {
   *display: inline;
 }
 
-/* line 46, ../sass/style.sass */
+/* line 55, ../sass/style.sass */
 .set-timer--break, .set-timer--session {
   margin: 0 1.5em;
 }
-/* line 48, ../sass/style.sass */
+/* line 57, ../sass/style.sass */
 .set-timer--header {
   display: block;
 }
-/* line 50, ../sass/style.sass */
+/* line 59, ../sass/style.sass */
 .set-timer--label {
   font-size: 1.5em;
   line-height: 2em;
   padding: 0 0.375em;
 }
 
-/* line 53, ../sass/style.sass */
+/* line 62, ../sass/style.sass */
 [class*="set-timer--trigger"] {
   padding: 0 0.75em;
 }
 
-/* line 57, ../sass/style.sass */
+/* line 66, ../sass/style.sass */
 .pomodoro--timer {
   height: 12em;
   width: 12em;
@@ -100,12 +113,12 @@ button {
   -webkit-border-radius: 100%;
   border-radius: 100%;
 }
-/* line 64, ../sass/style.sass */
+/* line 73, ../sass/style.sass */
 .pomodoro--header {
   margin-top: 1.125em;
   margin-bottom: 0em;
 }
-/* line 67, ../sass/style.sass */
+/* line 76, ../sass/style.sass */
 .pomodoro--countdown {
   font-size: 3em;
   line-height: 1.5em;
