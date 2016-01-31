@@ -21,42 +21,38 @@
   function init(){
     breakTime = breakTimeDefault;
     sessionTime = sessionTimeDefault;
-    setBreakLabel();
-    setSessionLabel();
-    setPomodoroTimerLabel();
+    setLabel($breakTimerLabel, breakTime);
+    setLabel($sessionTimerLabel, sessionTime);
+    setLabel($pomodoroClock, sessionTime);
   }
   init();
 
   // Set All labels
-  function setBreakLabel(){
-    $breakTimerLabel.html(breakTime);
-  }
-  function setSessionLabel(){
-    $sessionTimerLabel.html(sessionTime);
-  }
-  function setPomodoroTimerLabel(){
-    $pomodoroClock.html(sessionTime);
-  }
-  function increaseBreakTime() {
-    breakTime += 1;
-    setBreakLabel();
+
+  function setLabel(value, time) {
+    value.html(time);
   }
 
   // Adjust Times
   // Refactor to combine increase and decrease into to functions, as opposed to four
+  function increaseBreakTime() {
+    breakTime += 1;
+    setLabel($breakTimerLabel, breakTime);
+  }
+
   var decreaseBreakTime = function() {
     if(breakTime <= 1) {
       breakTime;
     } else {
       breakTime -= 1;
     }
-    setBreakLabel();
+    setLabel($breakTimerLabel, breakTime);
   }
 
   function increaseSessionTime() {
     sessionTime += 1;
-    setSessionLabel();
-    setPomodoroTimerLabel();
+    setLabel($sessionTimerLabel, sessionTime);
+    setLabel($pomodoroClock, sessionTime);
   }
 
   var decreaseSessionTime = function() {
@@ -65,8 +61,8 @@
     } else {
       sessionTime -= 1;
     }
-    setSessionLabel();
-    setPomodoroTimerLabel();
+    setLabel($sessionTimerLabel, sessionTime);
+    setLabel($pomodoroClock, sessionTime);
   }
 
   // Click events
