@@ -1,0 +1,114 @@
+/* line 11, ../sass/style.sass */
+*, *::before, *::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 13, ../sass/style.sass */
+html {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 16, ../sass/style.sass */
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans Condensed", sans-serif;
+  background-color: #70a300;
+  color: white;
+  text-align: center;
+}
+/* line 106, ../../../../../../../.rvm/gems/ruby-2.2.1@free-code-camp/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
+body html {
+  font-size: 100%;
+  line-height: 1.5em;
+}
+
+/* line 25, ../sass/style.sass */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+/* line 28, ../sass/style.sass */
+button, [class*="set-timer--trigger"] {
+  background-color: #2b3f00;
+  color: white;
+  -webkit-appearance: none;
+  border: #70a300 1px solid;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+/* line 35, ../sass/style.sass */
+button:hover, [class*="set-timer--trigger"]:hover {
+  cursor: pointer;
+}
+/* line 37, ../sass/style.sass */
+button:hover, [class*="set-timer--trigger"]:hover, button:active, [class*="set-timer--trigger"]:active, button:focus, [class*="set-timer--trigger"]:focus {
+  border: #770d15 1px solid;
+  background-color: #c51c22;
+}
+
+/* line 40, ../sass/style.sass */
+button {
+  padding: 0.75em;
+}
+
+/* line 43, ../sass/style.sass */
+[class*="set-timer--"] {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+}
+
+/* line 46, ../sass/style.sass */
+.set-timer--break, .set-timer--session {
+  margin: 0 1.5em;
+}
+/* line 48, ../sass/style.sass */
+.set-timer--header {
+  display: block;
+}
+/* line 50, ../sass/style.sass */
+.set-timer--label {
+  font-size: 1.5em;
+  line-height: 2em;
+  padding: 0 0.375em;
+}
+
+/* line 53, ../sass/style.sass */
+[class*="set-timer--trigger"] {
+  padding: 0 0.75em;
+}
+
+/* line 57, ../sass/style.sass */
+.pomodoro--timer {
+  height: 12em;
+  width: 12em;
+  margin: 1.5em auto 3em;
+  background-color: #699900;
+  border: #82bd00 1px solid;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+/* line 64, ../sass/style.sass */
+.pomodoro--header {
+  margin-top: 1.125em;
+  margin-bottom: 0em;
+}
+/* line 67, ../sass/style.sass */
+.pomodoro--countdown {
+  font-size: 3em;
+  line-height: 1.5em;
+  line-height: 1.5em;
+  margin-top: 0em;
+}
