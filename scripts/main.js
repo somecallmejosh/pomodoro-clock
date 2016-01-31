@@ -28,50 +28,34 @@
   init();
 
   // Set All labels
-
   function setLabel(value, time) {
     value.html(time);
   }
-
   // Adjust Times
   // Refactor to combine increase and decrease into to functions, as opposed to four
   function increaseBreakTime() {
     breakTime += 1;
     setLabel($breakTimerLabel, breakTime);
   }
-
   var decreaseBreakTime = function() {
-    if(breakTime <= 1) {
-      breakTime;
-    } else {
-      breakTime -= 1;
-    }
+    (breakTime <= 1 ? breakTime : breakTime -= 1);
     setLabel($breakTimerLabel, breakTime);
   }
-
   function increaseSessionTime() {
     sessionTime += 1;
     setLabel($sessionTimerLabel, sessionTime);
     setLabel($pomodoroClock, sessionTime);
   }
-
   var decreaseSessionTime = function() {
-    if(sessionTime <= 1) {
-      sessionTime;
-    } else {
-      sessionTime -= 1;
-    }
+    (sessionTime <= 1 ? sessionTime : sessionTime -= 1)
     setLabel($sessionTimerLabel, sessionTime);
     setLabel($pomodoroClock, sessionTime);
   }
-
   // Click events
   $breakIncrease.click(increaseBreakTime);
   $breakDecrease.click(decreaseBreakTime);
   $sessionIncrease.click(increaseSessionTime);
   $sessionDecrease.click(decreaseSessionTime);
   $('.reset').click(init);
-
-
 })();
 
