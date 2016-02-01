@@ -31,6 +31,7 @@
   function setLabel(value, time) {
     value.html(time);
   }
+
   // Adjust Times
   // Refactor to combine increase and decrease into to functions, as opposed to four
   function increaseBreakTime() {
@@ -51,11 +52,13 @@
     setLabel($sessionTimerLabel, sessionTime);
     setLabel($pomodoroClock, sessionTime);
   }
+
   // Click events
   $breakIncrease.click(increaseBreakTime);
   $breakDecrease.click(decreaseBreakTime);
   $sessionIncrease.click(increaseSessionTime);
   $sessionDecrease.click(decreaseSessionTime);
+
   $('.reset').click(init);
 })();
 
