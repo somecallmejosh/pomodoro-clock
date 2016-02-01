@@ -112,13 +112,23 @@ button {
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-/* line 73, ../sass/style.sass */
+/* line 74, ../sass/style.sass */
+.pomodoro--timer:hover {
+  background-color: #5e8a00;
+  border: #93d600 1px solid;
+  cursor: pointer;
+}
+/* line 78, ../sass/style.sass */
 .pomodoro--header {
   margin-top: 1.125em;
   margin-bottom: 0em;
 }
-/* line 76, ../sass/style.sass */
+/* line 81, ../sass/style.sass */
 .pomodoro--countdown {
   font-size: 3em;
   line-height: 1.5em;
