@@ -6,8 +6,7 @@
       $timeIncrease = $('.set-timer--trigger__up'),
       $timeDecrease = $('.set-timer--trigger__down'),
       $pomodoroTimer = $('.pomodoro--timer'),
-      $pomodoroClockMinutes = $('.pomodoro--countdown .minutes'),
-      $pomodoroClockSeconds = $('.pomodoro--countdown .seconds'),
+      $pomodorCountdown = $('.pomodoro--countdown'),
       $breakIncrease = $breakTimer.find($timeIncrease),
       $breakDecrease = $breakTimer.find($timeDecrease),
       $breakTimerLabel = $breakTimer.find($timerLabel),
@@ -20,12 +19,15 @@
       breakTime = breakTimeDefault,
       sessionTime = sessionTimeDefault;
 
+  var workTimer = setWorkTime(),
+      breakTimer = setBreakTime();
+
   function init(){
     breakTime = breakTimeDefault;
     sessionTime = sessionTimeDefault;
     setLabel($breakTimerLabel, breakTime);
     setLabel($sessionTimerLabel, sessionTime);
-    setLabel($pomodoroClockMinutes, sessionTime);
+    setLabel($pomodorCountdown, sessionTime + ":00");
   }
   init();
 
@@ -47,30 +49,50 @@
   function increaseSessionTime() {
     sessionTime += 1;
     setLabel($sessionTimerLabel, sessionTime);
-    setLabel($pomodoroClockMinutes, sessionTime);
+    setLabel($pomodorCountdown, sessionTime + ":00");
+    setWorkTime();
   }
   var decreaseSessionTime = function() {
     (sessionTime <= 1 ? sessionTime : sessionTime -= 1)
     setLabel($sessionTimerLabel, sessionTime);
-    setLabel($pomodoroClockMinutes, sessionTime);
+    setLabel($pomodorCountdown, sessionTime + ":00");
+    setWorkTime();
   }
 
-  // CountDownTimer
-  var seconds = 59;
-  function secondsCountdown(){
-    if(seconds >= 0){
-      var currentTime = seconds > 9 ? "" + seconds : "0" + seconds;
-      seconds--;
-      setLabel($pomodoroClockSeconds, currentTime);
+  // CountDownTimers
+  // Capture user entries for time variations
+  function setWorkTime() {
+    workTimer = sessionTime * 60000;
+    return workTimer;
+  }
+  function setBreakTime() {
+    breakTimer = breakTime * 60000;
+    return breakTimer;
+  }
+
+  // Refactor to allow for different timers
+  function timeConversion(){
+    if(workTimer >= 0) {
+      conversion = workTimer / 1000;
+      seconds = Math.round(conversion % 60);
+      secondsConversion = seconds > 9 ? "" + seconds : "0" + seconds;
+      conversion /= 60;
+      minutes = Math.floor(conversion % 60);
+      minutesConversion = minutes < 10 ? "0" + minutes : minutes;
+      workTimer = workTimer - 1000;
+      currentTime = minutesConversion + ":" + secondsConversion;
+      
+      // Show completion percentage
+      var currentPercent = (workTimer / (sessionTime * 60000)) * 100;
+      console.log("Completion Percentage: " + currentPercent.toFixed(1));
+
+      // Append to view
+      setLabel($pomodorCountdown, currentTime);
     }
   }
-
-
-  function sessionCountdown(){
-    // for(var i = sessionTime; i > 0; i--){
-    //   setLabel($pomodoroClockMinutes, currentTime);
-    // }
-    setInterval(secondsCountdown, 1000)
+  
+  function countDown(){
+    setInterval(timeConversion, 1000);
   }
 
   // Click events
@@ -78,7 +100,7 @@
   $breakDecrease.click(decreaseBreakTime);
   $sessionIncrease.click(increaseSessionTime);
   $sessionDecrease.click(decreaseSessionTime);
-  $pomodoroTimer.click(sessionCountdown);
+  $pomodoroTimer.click(countDown);
   $('.reset').click(init);
 })();
 
