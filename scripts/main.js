@@ -52,7 +52,7 @@
   }
 
   // Refactor to allow for different timers
-  function sessionCountDown(){
+  function sessionCountDown(myArg){
     if(workTimer >= 0) {
       conversion = workTimer / 1000;
       seconds = Math.round(conversion % 60);
@@ -62,18 +62,16 @@
       minutesConversion = minutes < 10 ? "0" + minutes : minutes;
       workTimer = workTimer - 1000;
       currentTime = minutesConversion + ":" + secondsConversion;
-      
       // Show completion percentage
       var currentPercent = (workTimer / (sessionTime * 60000)) * 100;
       // console.log("Completion Percentage: " + currentPercent.toFixed(1));
-
       // Append to view
       setLabel($pomodorCountdown, currentTime);
     }
   }
   
   function countDown(){
-    setInterval(sessionCountDown, 1000);
+    setInterval(function(){sessionCountDown("work")}, 1000);
   }
 
   function init(){
