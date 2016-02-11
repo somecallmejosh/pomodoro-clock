@@ -22,38 +22,19 @@
   var workTimer = setWorkTime(),
       breakTimer = setBreakTime();
 
-  function init(){
-    breakTime = breakTimeDefault;
-    sessionTime = sessionTimeDefault;
-    setLabel($breakTimerLabel, breakTime);
-    setLabel($sessionTimerLabel, sessionTime);
-    setLabel($pomodorCountdown, sessionTime + ":00");
-  }
-  init();
-
   // Set All labels
   function setLabel(value, time) {
     value.html(time);
   }
 
-  // Adjust Times
-  // Refactor to combine increase and decrease into to functions, as opposed to four
-  function increaseBreakTime() {
-    breakTime += 1;
+  function editBreakTime(direction){
+    direction === "up" ? breakTime += 1 : (breakTime <= 1 ? breakTime : breakTime -= 1);
     setLabel($breakTimerLabel, breakTime);
+    setBreakTime();
   }
-  var decreaseBreakTime = function() {
-    (breakTime <= 1 ? breakTime : breakTime -= 1);
-    setLabel($breakTimerLabel, breakTime);
-  }
-  function increaseSessionTime() {
-    sessionTime += 1;
-    setLabel($sessionTimerLabel, sessionTime);
-    setLabel($pomodorCountdown, sessionTime + ":00");
-    setWorkTime();
-  }
-  var decreaseSessionTime = function() {
-    (sessionTime <= 1 ? sessionTime : sessionTime -= 1)
+  function editSessionTime(direction){
+    direction === "up" ? sessionTime += 1 : (sessionTime <= 1 ? sessionTime : sessionTime -= 1);
+    // This label will probably get moved in association with the current timer
     setLabel($sessionTimerLabel, sessionTime);
     setLabel($pomodorCountdown, sessionTime + ":00");
     setWorkTime();
@@ -71,7 +52,7 @@
   }
 
   // Refactor to allow for different timers
-  function timeConversion(){
+  function sessionCountDown(){
     if(workTimer >= 0) {
       conversion = workTimer / 1000;
       seconds = Math.round(conversion % 60);
@@ -84,7 +65,7 @@
       
       // Show completion percentage
       var currentPercent = (workTimer / (sessionTime * 60000)) * 100;
-      console.log("Completion Percentage: " + currentPercent.toFixed(1));
+      // console.log("Completion Percentage: " + currentPercent.toFixed(1));
 
       // Append to view
       setLabel($pomodorCountdown, currentTime);
@@ -92,15 +73,36 @@
   }
   
   function countDown(){
-    setInterval(timeConversion, 1000);
+    setInterval(sessionCountDown, 1000);
   }
 
-  // Click events
-  $breakIncrease.click(increaseBreakTime);
-  $breakDecrease.click(decreaseBreakTime);
-  $sessionIncrease.click(increaseSessionTime);
-  $sessionDecrease.click(decreaseSessionTime);
-  $pomodoroTimer.click(countDown);
-  $('.reset').click(init);
-})();
+  function init(){
+    breakTime = breakTimeDefault;
+    sessionTime = sessionTimeDefault;
+    setLabel($breakTimerLabel, breakTime);
+    setLabel($sessionTimerLabel, sessionTime);
+    setLabel($pomodorCountdown, sessionTime + ":00");
+  }
+  init();
 
+  // Click events
+  // pass arguments to even handlers
+  // http://stackoverflow.com/questions/979337/how-can-i-pass-arguments-to-event-handlers-in-jquery
+  $breakDecrease.click(function(){
+    editBreakTime("down");
+  });
+  $breakIncrease.click(function(){
+    editBreakTime("up");
+  })
+  $sessionIncrease.click(function(){
+    editSessionTime("up");
+  });
+  $sessionDecrease.click(function(){
+    editSessionTime("down");
+  });
+
+  $pomodoroTimer.click(countDown);
+  $('.reset').click(function(){
+    location.reload();
+  });
+})();
