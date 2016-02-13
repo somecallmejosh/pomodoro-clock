@@ -51,27 +51,30 @@
     return breakTimer;
   }
 
+  function timeConversion(timeFunction){
+    conversion = timeFunction / 1000;
+    seconds = Math.round(conversion % 60);
+    secondsConversion = seconds > 9 ? "" + seconds : "0" + seconds;
+    conversion /= 60;
+    minutes = Math.floor(conversion % 60);
+    minutesConversion = minutes < 10 ? "0" + minutes : minutes;
+    workTimer = workTimer - 1000;
+    currentTime = minutesConversion + ":" + secondsConversion;
+    return currentTime;
+  }
+
+
   // Refactor to allow for different timers
-  function sessionCountDown(myArg){
+  function sessionCountDown(){
     if(workTimer >= 0) {
-      conversion = workTimer / 1000;
-      seconds = Math.round(conversion % 60);
-      secondsConversion = seconds > 9 ? "" + seconds : "0" + seconds;
-      conversion /= 60;
-      minutes = Math.floor(conversion % 60);
-      minutesConversion = minutes < 10 ? "0" + minutes : minutes;
-      workTimer = workTimer - 1000;
-      currentTime = minutesConversion + ":" + secondsConversion;
-      // Show completion percentage
-      var currentPercent = (workTimer / (sessionTime * 60000)) * 100;
-      // console.log("Completion Percentage: " + currentPercent.toFixed(1));
-      // Append to view
+      timeConversion(workTimer);
+      //var currentPercent = (workTimer / (sessionTime * 60000)) * 100;
       setLabel($pomodorCountdown, currentTime);
     }
   }
   
   function countDown(){
-    setInterval(function(){sessionCountDown("work")}, 1000);
+    setInterval(sessionCountDown, 1000);
   }
 
   function init(){
